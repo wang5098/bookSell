@@ -1,13 +1,6 @@
 import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
 const app = express()
-
-app.use(cors())
-
-// 用urllencoded解析表单数据
-app.use(express.urlencoded({ extended: false }))
-app.use(bodyParser.json());
+app.use(express.json()) //解析 JSON 数据
 
 // 路由是指客户端的请求与服务器处理函数之间的映射关系
 import loginRouter from './login.js';
@@ -28,7 +21,7 @@ app.use((err, req, res, next) => {
 })
 
 //启动服务器
-var port = 8085
+var port = 8086
 app.listen(port, () => {
   console.log('api server running at http://127.0.0.1:' + port)
 })

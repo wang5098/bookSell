@@ -55,7 +55,6 @@ router.post('/login', function (req, res) {
     //根据登录表单的username和password对比数据库
     console.log('post-login:', userinfo);
     db.query(sql, [userinfo.username, userinfo.password], (err, results) => {
-        console.log('login sql');
         if (err) {
             return res.send({
                 status: 1, msg: err
