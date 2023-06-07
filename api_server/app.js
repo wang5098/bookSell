@@ -1,6 +1,6 @@
 import express from 'express';
 const app = express()
-app.use(express.json()) // 用 express 自带的功能解析 JSON 数据
+app.use(express.json()) // 中间件：解析 JSON 数据
 
 // 路由是指客户端的请求与服务器处理函数之间的映射关系
 import loginRouter from './login.js';
@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
 })
 
 //启动服务器
-var port = 8088
+var port = 8848
 app.listen(port, () => {
   console.log('api server running at http://127.0.0.1:' + port)
 })
