@@ -8,16 +8,6 @@ app.use(cors())
 // 用urllencoded解析表单数据
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json());
-// 将文件部署为静态资源，服务器默认打开该目录下的 index.html
-// app.use(express.static('./dist'))
-
-// 使用session认证机制
-// import session from 'express-session';
-// app.use(session({
-//   secret: "fa/,}[!!``a", //密钥
-//   resave: false,
-//   saveUninitialized: true //强制将未初始化的 session 存储
-// }))
 
 // 路由是指客户端的请求与服务器处理函数之间的映射关系
 import loginRouter from './login.js';

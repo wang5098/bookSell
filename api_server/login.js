@@ -53,7 +53,7 @@ router.post('/login', function (req, res) {
     const userinfo = req.body
     const sql = `select * from users where username=? and password=?`
     //根据登录表单的username和password对比数据库
-    console.log('login:',userinfo);
+    console.log('post-login:', userinfo);
     db.query(sql, [userinfo.username, userinfo.password], (err, results) => {
         console.log('login sql');
         if (err) {
@@ -74,21 +74,20 @@ router.post('/login', function (req, res) {
     })
 })
 
-// 检查登录状态
-// router.get('/username', (req, res) => {
-//     console.log("get username");
-//     if (!req.session.islogin) {
-//         return res.send({
-//             status: 1,
-//             msg: 'fail'
-//         })
-//     }
-//     res.send({
-//         status: 0,
-//         msg: 'success',
-//         username: req.session.user.username,
-//     })
-// })
+// 管理登录获取全部users
+router.get('/admin', function (req, res) {
+    const sql = `select * from users`
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.log(err);
+        } else {
+            return res.send({
+                data: results
+            })
+        }
+    })
+})
+
 
 //导出router
 export default router

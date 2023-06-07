@@ -10,8 +10,9 @@
         密码:
         <input type="password" v-model="password" required />
       </label>
-      <button type="submit" @click="change = true">用户登录</button>
-      <button type="submit" @click="change = false">商家登录</button>
+        <button type="submit" @click="change = 1">用户登录</button>
+        <button type="submit" @click="change = 2">商家登录</button>
+        <button type="submit" @click="change = 3">管理员</button>
     </form>
 
     <h2>注册</h2>
@@ -35,7 +36,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 
 // 数据响应式
-const change = ref('true')
+const change = ref(1)
 const username = ref('')
 const password = ref('')
 const newUsername = ref('')
@@ -55,10 +56,12 @@ const login = () => {
     .then(function (res) {
       // 登录成功，跳转到表单展示页面
       console.log('login:', res.data)
-      if (res.data.status === 0 && change.value === true) {
+      if (res.data.status === 0 && change.value === 1) {
         router.push({ path: `/userBuy/${username.value}` })
-      } else if (res.data.status === 0 && change.value === false) {
+      } else if (res.data.status === 0 && change.value === 2) {
         router.push({ path: `/form/${username.value}` })
+      } else if (res.data.status === 0 && change.value === 3) {
+        router.push({ path: `/admin/${username.value}` })
       } else {
         alert('登录失败，请检查用户名或密码')
       }
@@ -96,6 +99,10 @@ const register = () => {
 </script>
 
 <style scoped>
+/* .loginBtn{
+  display: flex;
+  margin-top: 10px
+} */
 button {
   margin-left: 1rem;
 }
