@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h2>登录</h2>
     <form @submit.prevent="login">
       <label>
@@ -7,14 +7,14 @@
         <input type="text" v-model="username" required />
       </label>
       <label>
-        密码:
+        密&emsp;码:
         <input type="password" v-model="password" required />
       </label>
-        <button type="submit" @click="change = 1">用户登录</button>
-        <button type="submit" @click="change = 2">商家登录</button>
-        <button type="submit" @click="change = 3">管理员</button>
+      <button type="submit" @click="change = 1">用户登录</button>
+      <button type="submit" @click="change = 2">商家登录</button>
+      <button type="submit" @click="change = 3">管理员</button>
     </form>
-
+    <hr style="margin-top: 1rem"/>
     <h2>注册</h2>
     <form @submit.prevent="register">
       <label>
@@ -22,7 +22,7 @@
         <input type="text" v-model="newUsername" required />
       </label>
       <label>
-        密码:
+        密&emsp;码:
         <input type="password" v-model="newPassword" required />
       </label>
       <button type="submit">注册</button>
@@ -99,11 +99,33 @@ const register = () => {
 </script>
 
 <style scoped>
-/* .loginBtn{
-  display: flex;
-  margin-top: 10px
-} */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+input {
+  height: 25px;
+}
 button {
   margin-left: 1rem;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
 }
 </style>
