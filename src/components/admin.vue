@@ -3,6 +3,7 @@
     <h3>
       管理员：
       <text style="color: red; font-size: large; text-decoration: underline">{{ username }}</text>
+      <router-link to="/" style="margin-left: 2rem; font-size: medium">退出登录</router-link>
     </h3>
     <h4>用户表单</h4>
     <table class="table">
@@ -11,6 +12,7 @@
           <th>ID</th>
           <th>用户名</th>
           <th>密码</th>
+          <th>删除</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +20,7 @@
           <td>{{ admin.id }}</td>
           <td>{{ admin.username }}</td>
           <td>{{ admin.password }}</td>
+          <td><button class="btn" @click="delUser(admin.username)">删除</button></td>
         </tr>
       </tbody>
     </table>
@@ -36,7 +39,7 @@ const username = ref('')
 // 获取users表单数据
 const admin = () => {
   axios
-    .get('/api/admin/')
+    .get('/api/admin')
     .then((response) => {
       adminData.value = response.data.data
     })
@@ -45,6 +48,19 @@ const admin = () => {
     })
 }
 
+const delUser = (user) => {
+  axios
+    .post('/api/adminDel', { user }) // 传入一个对象或者数组( req.body.user | req.body[0] )
+    .then((res) => {
+      if (res.data.status === 0) {
+        alert(res.data.msg)
+        history.go(0)
+      } else alert('error')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 // 在组件挂载后，获取users数据
 onMounted(() => {
   admin()
@@ -64,5 +80,18 @@ onMounted(() => {
   border: 1px solid #ccc;
   padding: 8px;
   width: 15%;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 12px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #b30006;
 }
 </style>

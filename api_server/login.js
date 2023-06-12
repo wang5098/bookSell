@@ -28,7 +28,6 @@ router.post('/register', function (req, res) {
         }
         const sql = 'insert into users set ?'
         db.query(sql, { username: userinfo.username, password: userinfo.password }, (err, results) => {
-            console.log((results));
             if (err) {
                 return res.send({
                     status: 1, msg: err
@@ -82,6 +81,20 @@ router.get('/admin', function (req, res) {
         } else {
             return res.send({
                 data: results
+            })
+        }
+    })
+})
+
+router.post('/adminDel', function (req, res) {
+    let sql = `delete from users where username=?`
+    db.query(sql, req.body.user, (err, results) => {
+        if (err) {
+            console.log(err);
+        } else {
+            return res.send({
+                status: 0,
+                msg: "删除成功"
             })
         }
     })
