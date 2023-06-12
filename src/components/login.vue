@@ -10,9 +10,9 @@
         密&emsp;码:
         <input type="password" v-model="password" required />
       </label>
-      <button type="submit" @click="change = 1">用户登录</button>
-      <button type="submit" @click="change = 2">商家登录</button>
-      <button type="submit" @click="change = 3">管理员</button>
+      <button type="submit" @click="change = 1" class="btn">用户登录</button>
+      <button type="submit" @click="change = 2" class="btn">商家登录</button>
+      <button type="submit" @click="change = 3" class="btn">管理员</button>
     </form>
     <hr style="margin-top: 1rem"/>
     <h2>注册</h2>
@@ -25,7 +25,7 @@
         密&emsp;码:
         <input type="password" v-model="newPassword" required />
       </label>
-      <button type="submit">注册</button>
+      <button type="submit" class="btn">注册</button>
     </form>
   </div>
 </template>
@@ -115,7 +115,7 @@ label {
 input {
   height: 25px;
 }
-button {
+.btn {
   margin-left: 1rem;
   padding: 10px 20px;
   font-size: 16px;
@@ -125,7 +125,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
-button:hover {
+.btn:hover {
   background-color: #0056b3;
 }
 </style>

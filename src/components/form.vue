@@ -4,6 +4,7 @@
     <h3>
       欢迎商家：
       <text style="color: red; font-size: large; text-decoration: underline">{{ username }}</text>
+      <router-link to="/" style="margin-left: 2rem; font-size: medium">退出登录</router-link>
     </h3>
     <h4>图书购入入库表单</h4>
     <table class="table">

@@ -3,6 +3,7 @@
     <h2>
       欢迎用户：
       <text style="color: red; text-decoration: underline">{{ username }}</text>
+      <router-link to="/" style="float: right; font-size: medium">退出登录</router-link>
     </h2>
     <h2 class="title">图书销售页面</h2>
     <input class="input" type="text" v-model="book" placeholder="搜索图书名称" />
@@ -89,7 +90,7 @@ export default {
     },
     buyBook(book, i) {
       // 发起请求，将图书添加到salesinventory表
-      if (Number(this.num[i]) <= 0) {
+      if (Number(this.num[i]) <= 0 || isNaN(this.num[i])) {
         alert('请输入正整数！！！')
       } else {
         axios
