@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       username: '',
-      num: [],
+      num: [], // 购买的数量
       books: [], // 存储purchaseinventory表的图书数据
       book: '',
       msg: '',
