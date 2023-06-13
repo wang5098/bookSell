@@ -65,7 +65,7 @@ export default {
         if (this.books[i].book_name == this.book) {
           element.style.backgroundColor = 'red'
         } else {
-          element.style.backgroundColor = 'white'
+          element.style.backgroundColor = ''
         }
       }
     },
