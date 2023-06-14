@@ -1,12 +1,12 @@
 <template>
   <div style="margin: 2rem">
-    <h2>商家管理页面</h2>
+    <h2 style="text-align: center">商家管理页面</h2>
     <h3>
       欢迎商家：
       <text style="color: red; font-size: large; text-decoration: underline">{{ username }}</text>
       <router-link to="/" style="margin-left: 2rem; font-size: medium">退出登录</router-link>
     </h3>
-    <h4>图书购入入库表单</h4>
+    <h4 class="formH">图书购入入库表单</h4>
     <table class="table">
       <!-- 表格头部 -->
       <thead>
@@ -30,7 +30,7 @@
           <td>{{ purchaseItem.remark }}</td>
         </tr>
         <tr>
-          <td><button @click="buy" class="btn">点击入库</button></td>
+          <td><button @click="buy">点击入库</button></td>
           <td>
             <input type="text" v-model="buyBook[0]" />
           </td>
@@ -49,7 +49,8 @@
         </tr>
       </tbody>
     </table>
-    <h4>图书销售出库表单</h4>
+    <hr style="margin: 2rem 1rem" />
+    <h4 class="formH">图书销售出库表单</h4>
     <table class="table">
       <!-- 表格头部 -->
       <thead>
@@ -75,6 +76,7 @@
       </tbody>
     </table>
   </div>
+  <div><br /><br /><br /></div>
 </template>
 
 <script setup>
@@ -125,6 +127,7 @@ const buy = () => {
       console.error(error)
     })
 }
+
 // 在组件挂载后，获取图书销售出库和图书购入入库数据
 onMounted(() => {
   fetchSalesData()
@@ -137,6 +140,8 @@ onMounted(() => {
 <style scoped>
 .table {
   border-collapse: collapse;
+  text-align: center;
+  width: 100%;
 }
 
 .table th,
@@ -145,10 +150,8 @@ onMounted(() => {
   padding: 8px;
   width: 15%;
 }
-
-.btn {
-  position: relative;
-  width: 100%;
-  float: right;
+.formH {
+  float: left;
+  margin: 1rem;
 }
 </style>
